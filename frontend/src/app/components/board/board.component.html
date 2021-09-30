@@ -1,0 +1,53 @@
+<div class="content-page">
+    <mat-toolbar class="neo-toolbar">
+        <mat-toolbar-row>
+            <div class="toolbar-test" *ngIf="board">
+                <h3>
+                    <span [id]="board" contenteditable [textContent]="board.title" (input)="board.title=$event.target.textContent" (click)="changeTitle($event, null)"></span>
+                </h3>
+            </div>
+            <span class="example-spacer"></span>
+            <div class="colab-section">
+                <mat-icon *ngIf="board" class="membersIcon" [matBadge]="board.collaborater.length" matBadgeColor="warn" (click)="colabManagent()" [matTooltip]="displayTooltip()" [matTooltipClass]="'my-tooltip'">groups</mat-icon>
+                <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left:14px">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item disabled *ngIf="owner">
+                        <mat-icon>admin_panel_settings</mat-icon>
+                        <span *ngIf="owner.firstName != null"> {{owner.firstName}} </span> <span *ngIf="owner.lastName != null">{{owner.lastName}} </span>
+                      </button>
+                    <button mat-menu-item (click)="getAllFiles()">
+                        <mat-icon>attach_file</mat-icon>
+                        <span >Liste de fichiers</span>
+                      </button>
+                    <button mat-menu-item (click)="openHistoryWindow()" [disabled]="!history.length > 0 ">
+                        <mat-icon [matBadge]="history.length" matBadgeSize="small" >history</mat-icon>
+                        <span>Historique</span>
+                      </button>
+                    <button mat-menu-item (click)="deleteBoard()" [disabled]="!isOwner">
+                      <mat-icon>delete</mat-icon>
+                      <span >Supprimer le tableau</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="board">
+        <div class="card-list" *ngFor="let c of colonnes; let index = index;">
+            <div class="header-col">
+                <h2> {{index +1 }}.
+                    <span [id]="index" contenteditable [textContent]="c.title" (input)="c.title=$event.target.textContent" (click)="changeTitle($event, c)"></span>
+                </h2>
+                <div class="btn-col">
+                    <mat-icon class="icon" (click)="deleteCol(c)">delete</mat-icon>
+                </div>
+            </div>
+            <div class="card-list-content" cdkDropList [id]="c.idString" [cdkDropListData]="c.cards" (cdkDropListDropped)="onCardDrop($event, c)" [cdkDropListConnectedTo]="allCols()">
+                <app-card-line *ngFor="let card of c.cards" [title]="card.title" [card]="card" cdkDrag (edit)="editCard(card)" (delete)="deleteCard(card, c)" style="cursor: grab;"></app-card-line>
+                <button mat-stroked-button color="warn" (click)="createCard(c)">nouvelle carte</button>
+            </div>
+        </div>
+        <button mat-stroked-button color="warn" (click)="createColumn()" style=" min-width:150px!important; max-width: 200px!important;">Nouvelle Colonne</button>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<form [formGroup]='form'>
+
+    <div class="card-btn">
+        <mat-icon style="font-size:30px; margin-right:2px" [style.color]="color">lense</mat-icon>
+        <mat-icon class="color-btn" (click)="open()">color_lense</mat-icon>
+    </div>
+    <h1 class="header">
+        {{(isNew) ? 'Créer' : 'Editer'}}
+    </h1>
+    <h4 *ngIf="!isNew">
+        Créer le : {{card.createAt | date: 'dd/MM/yyyy à HH:mm:ss'}} <br> Mis à jour le : {{card.lastUpdate | date: 'dd/MM/yyyy à HH:mm:ss'}}
+    </h4>
+
+    <mat-form-field>
+        <input matInput placeholder="Titre de la carte" [formControl]="ctlTitle">
+        <mat-error class="field-error" *ngIf="ctlTitle.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <textarea matInput placeholder="Détails" [formControl]="ctlContent"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Ajouter des collaborateurs</mat-label>
+        <mat-select [formControl]="CtlCollabortater" multiple>
+            <mat-option *ngFor="let user of colabList" [value]="user.id"> {{user.firstName}} {{user.lastName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="!isLoading ; else loading">
+
+        <div *ngIf="!fileUrl" class="upload-file">
+            <button mat-stroked-button color="warn" (click)="btn.click()"> <mat-icon>attach_file</mat-icon>Choisir un fichier</button>
+            <input #btn type="file" (change)="upload($event)" style="visibility: hidden;">
+        </div>
+        <div class="upload-file">
+            <ng-container *ngIf="fileUrl != null;">
+                <mat-icon (click)="deleteFile(fileUrl)" style="cursor: pointer;">
+                    delete
+                </mat-icon>
+                <a (click)="openNewTab(fileUrl)" class="url">{{showName(fileUrl)}}</a>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-template #loading>
+        <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
+        <h2>{{progressValue}} %</h2>
+    </ng-template>
+</form>
+<div class="footer">
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid  || isLoading" (click)="confirm()"> {{(isNew) ? 'Créer' : 'Editer'}}</button>
+    <button type="reset" mat-button (click)="cancel()" [disabled]="isLoading">Annuler</button>
+</div>

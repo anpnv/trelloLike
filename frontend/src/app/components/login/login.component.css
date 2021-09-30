@@ -1,0 +1,35 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    width: 30vw;
+    height: 80vh;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    user-select: none;
+}
+
+mat-card {
+    border-radius: 3px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 40vw;
+    height: 80vh;
+    margin: auto;
+    top: 10vh!important;
+}
+
+mat-card:hover {
+    box-shadow: 50px 50px 100px #666666, -50px -50px 50px #ffffff!important;
+}
+
+img {
+    height: 35vh;
+    width: auto;
+}

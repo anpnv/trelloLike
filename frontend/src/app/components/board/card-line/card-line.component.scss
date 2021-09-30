@@ -1,0 +1,35 @@
+:host {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.mat-card-content {
+    margin-bottom: 0;
+}
+
+mat-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.card {
+    border: 0;
+    position: relative;
+}
+
+.icon,
+.icon2 {
+    font-size: 17px;
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+}
+
+.icon {
+    top: 5px;
+}
+
+.icon2 {
+    bottom: 5px;
+}

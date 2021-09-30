@@ -1,0 +1,13 @@
+<mat-card class="card" [style.background]="card?.color ? card.color : '#fff'">
+    <mat-card-content [style.color]="lightOrDark(card.color)">
+        <strong> <span *ngIf="card.fileUrl">
+            <mat-icon>attachment</mat-icon>
+        </span> {{card.title}} </strong>
+        <p>{{card.content}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-icon (click)="delete.next()" class="icon2" [style.color]="lightOrDark(card.color)">delete</mat-icon>
+        <mat-icon (click)="edit.next()" class="icon" [style.color]="lightOrDark(card.color)">settings</mat-icon>
+    </mat-card-actions>
+
+</mat-card>

@@ -1,0 +1,15 @@
+<form [formGroup]='form'>
+    <h1 class="header">Ajouter une colonne</h1>
+    <img src="../../../../assets/img/column.svg">
+
+    <mat-form-field style="padding-top:25px">
+        <input matInput placeholder="Titre de la colonne" [formControl]="ctlTitle" required>
+        <mat-error class="field-error" *ngIf="ctlTitle.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+</form>
+
+<div class="footer">
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="create()">Créer</button>
+    <button type="reset" mat-button (click)="cancel()">Annuler</button>
+</div>

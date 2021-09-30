@@ -1,0 +1,74 @@
+<form id="frm" class="form" [formGroup]="frm" novalidate>
+    <h1 class="header">
+        <ng-container *ngIf="!signup; else signupTitle"> {{(!isNew ? 'Editer un' : 'Ajouter un nouveau') + ' membre'}}</ng-container>
+        <ng-template #signupTitle>
+            Crée un compte
+        </ng-template>
+    </h1>
+    <div class="form">
+        <mat-form-field>
+            <input matInput placeholder="Pseudo" [formControl]="ctlPseudo" required [readonly]="!isNew">
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('required')">Required</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('minlength')">Minimum length is {{ctlPseudo.errors['minlength'].requiredLength}}</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('pseudoUsed')">Pseudo already in use</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('forbiddenValue')">Forbiddent value 'abc'</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput [placeholder]="'Mot de passe ' + (isNew ? '' : ' (laissez blanc si pas de changement)')" [formControl]="ctlPassword" type="password" [required]="isNew" autocomplete="new-password">
+            <mat-error class="field-error" *ngIf="ctlPassword.hasError('required')">Requis</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPassword.hasError('minlength')">La taille minimale est {{ctlPassword.errors['minlength'].requiredLength}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="signup">
+            <input matInput placeholder="Confirmer le mot de passe *" type="password" [formControl]="ctlConfirmPassword" />
+            <mat-error class="field-error" *ngIf="ctlConfirmPassword.hasError('required')"> Requis </mat-error>
+            <mat-error class="field-error" *ngIf="ctlConfirmPassword.hasError('minlength')">La taille minimale est {{ctlConfirmPassword.errors['minlength'].requiredLength}}</mat-error>
+        </mat-form-field>
+
+
+
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="Prénom" [formControl]="ctlFirstName">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nom" [formControl]="ctlLastName">
+        </mat-form-field>
+
+        <mat-form-field class="w-100 mb-2">
+            <input matInput placeholder="Email" formControlName="email">
+
+            <mat-error *ngIf="ctlEmail.hasError('required')">
+                Email requis
+            </mat-error>
+            <mat-error *ngIf="ctlEmail.hasError('email')">
+                Mauvais format
+            </mat-error>
+            <mat-error *ngIf="ctlEmail.hasError('emailUsed')">
+                l'email est déjà utilisé
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput placeholder="Birth Date" [formControl]="ctlBirthDate" type="date">
+            <mat-error class="field-error" *ngIf="ctlBirthDate.hasError('tooYoung')">Must be at least 18 years old</mat-error>
+            <mat-error class="field-error" *ngIf="ctlBirthDate.hasError('futureBorn')">Can't be born in the future</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!signup">
+            <mat-select placeholder="Role" [formControl]="ctlRole">
+                <mat-option [value]="2">Admin</mat-option>
+                <mat-option [value]="1">Manager</mat-option>
+                <mat-option [value]="0">Member</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="footer">
+        <button type="submit" mat-button form="frm" [disabled]="frm.pristine || frm.invalid || frm.pending" (click)="update()">{{!isNew ? 'Mettre a jour' : 'Créer'}}</button>
+        <button type="reset" mat-button (click)="cancel()">Annuler</button>
+    </div>
+</form>

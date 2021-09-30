@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    position: relative;
+}
+
+h1 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 40px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.row {
+    position: relative;
+    z-index: 2;
+}
+
+th.mat-column-actions {
+    width: 110px;
+}
+
+.img-bottom-right {
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
+    z-index: 1;
+    & #responsive {
+        max-width: 35vw;
+        height: auto;
+    }
+}

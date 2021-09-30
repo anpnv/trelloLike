@@ -1,0 +1,52 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    min-width: 80%;
+    max-width: 100%;
+    max-height: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+img {
+    width: 80%;
+    height: auto;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+    user-select: none;
+}
+
+h4 {
+    text-align: center;
+    user-select: none;
+}
+
+.url {
+    color: rgb(79, 141, 223)!important;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.footer {
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: auto auto;
+    margin-top: 30px;
+}
+
+.color-btn {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

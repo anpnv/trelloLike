@@ -1,0 +1,16 @@
+<form [formGroup]='form'>
+    <h1 class="header">Gestion de<br>collaborateur </h1>
+    <img src="../../../../assets/img/add_user.svg" alt="add-user">
+    <div class="form" style="margin-top:5%;">
+        <mat-form-field appearance="fill">
+            <mat-label>Ajouter des collaborateurs</mat-label>
+            <mat-select [formControl]="CtlCollabortater" multiple>
+                <mat-option *ngFor="let user of colabList" [value]="user.id"> {{user.firstName}} {{user.lastName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>
+<div class="footer" style="margin-top:5%;">
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid" (click)="update()">Mettre à jour</button>
+    <button type="reset" mat-button (click)="cancel()">Annuler</button>
+</div>

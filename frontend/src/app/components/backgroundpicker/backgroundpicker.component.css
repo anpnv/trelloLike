@@ -1,0 +1,7 @@
+.footer {
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: auto auto;
+    margin-top: 30px;
+}

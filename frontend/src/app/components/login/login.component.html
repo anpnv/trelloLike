@@ -1,0 +1,31 @@
+<mat-card>
+    <form [formGroup]="loginForm">
+        <h1>Connexion</h1>
+        <img src="../../../assets/img/login.svg">
+        <mat-form-field>
+            <input #pseudo matInput placeholder="Pseudo" [formControl]="ctlPseudo" required appSetFocus>
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('required')">Requis</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPseudo.hasError('custom')">{{ctlPseudo.errors.custom}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Mot  de passe" [formControl]="ctlPassword" required>
+            <mat-error class="field-error" *ngIf="ctlPassword.hasError('required')">Requis</mat-error>
+            <mat-error class="field-error" *ngIf="ctlPassword.hasError('custom')">{{ctlPassword.errors.custom}}
+            </mat-error>
+        </mat-form-field>
+
+        <button [disabled]="loading" mat-stroked-button (click)="onSubmit()">Connexion</button>
+
+        <!--  
+        <button mat-stroked-button (click)="fbs.google()">Se connecter avec google</button>
+
+        <button mat-stroked-button (click)="fbs.facebook()">Se connecter avec Facebook</button>
+
+-->
+
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+        <button mat-button color="primary" (click)="signup()" style="line-height: normal; margin-top:5px;">
+            Vous n'avez pas encore de compte? <br>Cliquez ici pour vous inscrire
+        </button>
+    </form>
+</mat-card>

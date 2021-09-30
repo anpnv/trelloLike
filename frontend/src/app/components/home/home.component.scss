@@ -1,0 +1,58 @@
+mat-card {
+    width: 220px;
+    height: 110px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    & mat-card-header {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center!important;
+        height: 100%;
+    }
+}
+
+mat-card:hover {
+    box-shadow: 10px 10px 19px #666666, -10px -10px 19px #ffffff!important;
+}
+
+.createBtn {
+    color: white;
+    background: linear-gradient(315deg, #6159e6, #746aff);
+}
+
+.createBtn:hover {
+    box-shadow: 10px 10px 19px #2b2866, -10px -10px 19px #ad9eff!important;
+}
+
+.img-bottom-right {
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
+    & #responsive {
+        max-width: 35vw;
+        height: auto;
+    }
+}
+
+h1 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 40px;
+}
+
+.wrapper {
+    width: 100%;
+    height: 35%;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    & mat-card {
+        margin-right: 20px;
+        margin-bottom: 15px;
+    }
+}

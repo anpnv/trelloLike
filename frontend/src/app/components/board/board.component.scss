@@ -1,0 +1,146 @@
+.neo-toolbar {
+    border-radius: 4px;
+    background: linear-gradient(45deg, #ffffff, #e6e6e6);
+    box-shadow: 5px -5px 10px #a1a1a1, -5px 5px 10px #ffffff;
+}
+
+.toolbar-test {
+    padding-left: 2%;
+    h3 {
+        font-size: 32px;
+    }
+}
+
+.colab-section {
+    padding-left: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .membersIcon {
+        font-size: 34px!important;
+        height: 100%;
+        margin-right: 14px;
+        margin-left: 14px;
+        cursor: pointer;
+    }
+    .colab-list {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .item,
+    .ownerItem {
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 150px;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        color: white;
+        font-weight: 100;
+    }
+    .item {
+        background: linear-gradient(315deg, #5d34a5, #6e3ec4);
+        box-shadow: 0px 1px 10px #432677, 5px 1px 5px #8b4ef7;
+    }
+    .ownerItem {
+        background: linear-gradient(315deg, #9e3e3e, #bc4a4a);
+        box-shadow: 0px 1px 10px #963b3b, 5px 1px 5px#ca4f4f;
+    }
+    .add-btn {
+        margin-right: 15px;
+        cursor: pointer;
+        height: 100%;
+        width: 35px;
+        font-size: 34px!important;
+    }
+}
+
+.colab-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.board {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80vh;
+    margin-top: 10px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    & button {
+        height: 50px!important;
+        width: 100%!important;
+    }
+}
+
+.card-list {
+    height: 95%;
+    width: 320px;
+    overflow: auto;
+    box-sizing: border-box;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 5px;
+    padding: 8px;
+    background: linear-gradient(225deg, #ffffff, #e6e6e6);
+    box-shadow: -5px 5px 10px #a1a1a1, 5px -5px 10px #ffffff;
+    & h2 {
+        padding-left: 15px;
+    }
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    h2 {
+        margin-bottom: 5px;
+    }
+}
+
+.card-list-content {
+    overflow: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.my-tooltip {
+    white-space: pre-line;
+}
+
+.header-col {
+    display: flex;
+    border: 0;
+    position: relative;
+}
+
+.icon {
+    font-size: 17px;
+    cursor: pointer;
+    right: 2px;
+    top: 2px;
+    color: rgb(211, 107, 107);
+    position: absolute;
+}
+
+.btn-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

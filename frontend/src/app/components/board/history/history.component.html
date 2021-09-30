@@ -1,0 +1,11 @@
+<mat-card *ngFor="let elem of data.history" style="margin-bottom:5px">
+    <mat-card-title>
+        {{elem.author}}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{elem.time | date: 'dd/MM/yyyy à HH:mm'}}
+    </mat-card-subtitle>
+    <mat-card-content>
+        {{elem.actionDetails}}
+    </mat-card-content>
+</mat-card>

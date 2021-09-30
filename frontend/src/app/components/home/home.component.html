@@ -1,0 +1,38 @@
+<div class="content-page" *ngIf="currentUser$ |async  as u">
+    <h1>Mes Tableaux</h1>
+
+    <div class="wrapper">
+        <mat-card *ngFor="let b of u.boards" (click)="navigate(b.id)">
+            <mat-card-header>
+                <mat-card-title *ngIf="b">
+                    {{b.title}}
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
+        <mat-card class="createBtn" (click)="createBoard()">
+            <mat-card-title>
+                Créer un tableau
+            </mat-card-title>
+        </mat-card>
+    </div>
+
+    <h1>Mes collaborations</h1>
+
+    <div class="wrapper" *ngIf="u.boardParticipations.length > 0 ; else noColab">
+        <mat-card *ngFor="let b of u.boardParticipations" (click)="navigate(b.id)">
+            <mat-card-header>
+                <mat-card-title>
+                    {{b.title}}
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <ng-template #noColab>
+        <h2>Je n'ai aucune collaboration</h2>
+    </ng-template>
+
+
+    <div class="img-bottom-right">
+        <img src="../../../assets/img/board.svg" id="responsive">
+    </div>
+</div>

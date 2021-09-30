@@ -1,0 +1,18 @@
+<h1 class="header">
+    Liste de fichiers
+
+</h1>
+
+<div *ngFor="let a of map | keyvalue">
+
+    <mat-card>
+        <mat-card-title>
+            <mat-icon style="color:rgb(99, 169, 209); cursor: pointer;" (click)="openTab(a.value)">get_app</mat-icon>
+            {{a.key}}</mat-card-title>
+    </mat-card>
+
+</div>
+
+<div class="footer">
+    <button mat-raised-button color="primary" (click)="close()"> Fermer la fenêtre</button>
+</div>
